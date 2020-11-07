@@ -1,0 +1,233 @@
+{\rtf1\ansi\ansicpg950\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset136 PingFangTC-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red31\green31\blue36;\red252\green95\blue163;
+\red65\green161\blue192;\red252\green106\blue93;\red93\green216\blue255;\red208\green168\blue255;\red161\green103\blue230;
+\red103\green183\blue164;\red208\green191\blue105;\red158\green241\blue221;}
+{\*\expandedcolortbl;;\csgenericrgb\c100000\c100000\c100000\c85000;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c98839\c37355\c63833;
+\csgenericrgb\c25395\c63013\c75478;\csgenericrgb\c98912\c41558\c36568;\csgenericrgb\c36295\c84643\c99897;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c63232\c40219\c90115;
+\csgenericrgb\c40538\c71705\c64209;\csgenericrgb\c81498\c74939\c41233;\csgenericrgb\c62145\c94386\c86819;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww18620\viewh21300\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx10524\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 For example\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx791\pardeftab791\pardirnatural\partightenfactor0
+
+\f1\fs32 \cf2 \cb3 \
+
+\f2\b \cf4 import
+\f1\b0 \cf2  UIKit\
+\
+
+\f2\b \cf4 var
+\f1\b0 \cf2  \cf5 myProduct\cf2  = [\cf6 "MacPro"\cf2 ,\cf6 "Ps4"\cf2 ,\cf6 "xBoxOne"\cf2 ,\cf6 "iWatch"\cf2 ,\cf6 "Apple"\cf2 ]\
+\
+
+\f2\b \cf4 class
+\f1\b0 \cf2  \cf7 ViewController\cf2 : \cf8 UIViewController\cf2 ,\cf8 UITableViewDelegate\cf2 ,\cf8 UITableViewDataSource\cf2 ,\cf8 UISearchResultsUpdating\cf2  \{\
+    \
+    
+\f2\b \cf4 @IBOutlet
+\f1\b0 \cf2  
+\f2\b \cf4 weak
+\f1\b0 \cf2  
+\f2\b \cf4 var
+\f1\b0 \cf2  \cf5 myTableView\cf2 : \cf8 UITableView\cf2 !\
+    \
+    \
+    
+\f2\b \cf4 let
+\f1\b0 \cf2  \cf5 searchResultsController\cf2  = \cf8 UITableViewController\cf2 ()\
+    
+\f2\b \cf4 var
+\f1\b0 \cf2  \cf5 searchcontroller\cf2  : \cf8 UISearchController\cf2 ?\
+\pard\tx791\tqr\tx4446\tx4481\pardeftab791\pardirnatural\partightenfactor0
+\cf2     
+\f2\b \cf4 var
+\f1\b0 \cf2  \cf5 resultArray\cf2  = [\cf8 String\cf2 ]()\
+\pard\tx791\pardeftab791\pardirnatural\partightenfactor0
+\cf2     \
+\
+    
+\f2\b \cf4 override
+\f1\b0 \cf2  
+\f2\b \cf4 func
+\f1\b0 \cf2  \cf5 viewDidLoad\cf2 () \{\
+        
+\f2\b \cf4 super
+\f1\b0 \cf2 .\cf9 viewDidLoad\cf2 ()\
+       \
+        \
+        \cf10 searchcontroller\cf2  = \cf8 UISearchController\cf2 (searchResultsController: \cf10 searchResultsController\cf2 )\
+        \cf10 myTableView\cf2 .\cf9 tableHeaderView\cf2  = \cf10 searchcontroller\cf2 ?.\cf9 searchBar\cf2 \
+        \cf10 searchcontroller\cf2 ?.\cf9 searchResultsUpdater\cf2  = 
+\f2\b \cf4 self
+\f1\b0 \cf2 \
+        \cf10 searchResultsController\cf2 .\cf9 tableView\cf2 .\cf9 dataSource\cf2  = 
+\f2\b \cf4 self
+\f1\b0 \cf2 \
+        \cf10 searchResultsController\cf2 .\cf9 tableView\cf2 .\cf9 delegate\cf2  = 
+\f2\b \cf4 self
+\f1\b0 \cf2 \
+       \
+        \cf10 searchResultsController\cf2 .\cf9 tableView\cf2 .\cf9 register\cf2 (\cf8 UINib\cf2  (nibName: \cf6 "SearchBarCellTableViewCell"\cf2 , bundle: \cf8 Bundle\cf2 .\cf9 main\cf2 ), forCellReuseIdentifier: \cf6 "mySearchID"\cf2 )\
+        \
+        \
+    \}\
+\
+    \
+    
+\f2\b \cf4 func
+\f1\b0 \cf2  \cf5 updateSearchResults\cf2 (for searchController: \cf8 UISearchController\cf2 ) \{\
+        
+\f2\b \cf4 if
+\f1\b0 \cf2  
+\f2\b \cf4 let
+\f1\b0 \cf2  searchWord =  \cf10 searchcontroller\cf2 ?.\cf9 searchBar\cf2 .\cf9 text\cf2  \{\
+            \cf10 resultArray\cf2  = \cf10 myProduct\cf2 .\cf9 filter\cf2 (\{\
+                (findProduct) -> \cf8 Bool\cf2  
+\f2\b \cf4 in
+\f1\b0 \cf2 \
+                
+\f2\b \cf4 if
+\f1\b0 \cf2  findProduct.\cf9 lowercased\cf2 ().\cf9 contains\cf2 (searchWord.\cf9 lowercased\cf2 ())\{\
+                    
+\f2\b \cf4 return
+\f1\b0 \cf2  
+\f2\b \cf4 true
+\f1\b0 \cf2 \
+                \} 
+\f2\b \cf4 else
+\f1\b0 \cf2  \{\
+                    
+\f2\b \cf4 return
+\f1\b0 \cf2  
+\f2\b \cf4 false
+\f1\b0 \cf2 \
+                \}\
+            \})\
+            
+\f2\b \cf4 self
+\f1\b0 \cf2 .\cf10 searchResultsController\cf2 .\cf9 tableView\cf2 .\cf9 reloadData\cf2 ()\
+        \}\
+\
+    \}\
+    \
+    
+\f2\b \cf4 func
+\f1\b0 \cf2  \cf5 numberOfSections\cf2 (in tableView: \cf8 UITableView\cf2 ) -> \cf8 Int\cf2  \{\
+        
+\f2\b \cf4 return
+\f1\b0 \cf2  \cf11 1\cf2 \
+    \}\
+    \
+    
+\f2\b \cf4 func
+\f1\b0 \cf2  \cf5 tableView\cf2 (
+\f2\b \cf4 _
+\f1\b0 \cf2  tableView: \cf8 UITableView\cf2 , numberOfRowsInSection section: \cf8 Int\cf2 ) -> \cf8 Int\cf2  \{\
+        
+\f2\b \cf4 if
+\f1\b0 \cf2  tableView \cf9 ==\cf2  
+\f2\b \cf4 self
+\f1\b0 \cf2 .\cf10 myTableView\cf2  \{\
+            
+\f2\b \cf4 return
+\f1\b0 \cf2  \cf10 myProduct\cf2 .\cf9 count\cf2 \
+        \} 
+\f2\b \cf4 else
+\f1\b0 \cf2  \{\
+            
+\f2\b \cf4 return
+\f1\b0 \cf2  \cf10 resultArray\cf2 .\cf9 count\cf2 \
+        \}\
+        \
+    \}\
+    \
+    
+\f2\b \cf4 func
+\f1\b0 \cf2  \cf5 tableView\cf2 (
+\f2\b \cf4 _
+\f1\b0 \cf2  tableView: \cf8 UITableView\cf2 , cellForRowAt indexPath: \cf8 IndexPath\cf2 ) -> \cf8 UITableViewCell\cf2  \{\
+        \
+        \
+        
+\f2\b \cf4 if
+\f1\b0 \cf2  tableView \cf9 ==\cf2  \cf10 myTableView\cf2  \{\
+            
+\f2\b \cf4 if
+\f1\b0 \cf2  
+\f2\b \cf4 let
+\f1\b0 \cf2  cell = tableView.\cf9 dequeueReusableCell\cf2 (withIdentifier: \cf6 "myCell"\cf2 , for: indexPath) 
+\f2\b \cf4 as
+\f1\b0 \cf2 ? \cf12 searchBarTableViewCell\cf2  \{\
+                
+\f2\b \cf4 for
+\f1\b0 \cf2  
+\f2\b \cf4 _
+\f1\b0 \cf2  
+\f2\b \cf4 in
+\f1\b0 \cf2  \cf10 myProduct\cf2  \{\
+                    cell.\cf9 textLabel\cf2 ?.\cf9 text\cf2  = \cf10 myProduct\cf2 [indexPath.\cf9 row\cf2 ]\
+                \}\
+                
+\f2\b \cf4 return
+\f1\b0 \cf2  cell\
+            \} 
+\f2\b \cf4 else
+\f1\b0 \cf2  \{\
+                
+\f2\b \cf4 let
+\f1\b0 \cf2  cell = \cf8 UITableViewCell\cf2 ()\
+                
+\f2\b \cf4 return
+\f1\b0 \cf2  cell\
+            \}\
+        \}
+\f2\b \cf4 else
+\f1\b0 \cf2  \{\
+            \
+            \cf9 print\cf2 (\cf6 "
+\f3 \'ac\'4f\'a7\'5f\'a6\'b3\'b6\'69\'a4\'4a
+\f1  "\cf2 )\
+            
+\f2\b \cf4 if
+\f1\b0 \cf2  
+\f2\b \cf4 let
+\f1\b0 \cf2  cell = tableView.\cf9 dequeueReusableCell\cf2 (withIdentifier: \cf6 "mySearchID"\cf2 , for: indexPath) 
+\f2\b \cf4 as
+\f1\b0 \cf2 ? \cf12 SearchBarCellTableViewCell\cf2  \{\
+                \
+                \
+                
+\f2\b \cf4 for
+\f1\b0 \cf2  
+\f2\b \cf4 _
+\f1\b0 \cf2  
+\f2\b \cf4 in
+\f1\b0 \cf2  \cf10 resultArray\cf2  \{\
+                    \cf9 print\cf2 (\cf6 "cell.myNameLabel.text   is nil  ?????????"\cf2 )\
+                    cell.\cf10 myNameLabel\cf2 .\cf9 text\cf2  = \cf10 resultArray\cf2 [indexPath.\cf9 row\cf2 ]\
+                \}\
+                
+\f2\b \cf4 return
+\f1\b0 \cf2  cell\
+            \} 
+\f2\b \cf4 else
+\f1\b0 \cf2  \{\
+                
+\f2\b \cf4 let
+\f1\b0 \cf2  cell = \cf8 UITableViewCell\cf2 ()\
+                
+\f2\b \cf4 return
+\f1\b0 \cf2  cell\
+            \}\
+            \
+        \}\
+\
+    \}\
+\
+\}\
+}

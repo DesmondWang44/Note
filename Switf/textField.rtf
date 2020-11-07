@@ -1,0 +1,110 @@
+{\rtf1\ansi\ansicpg950\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset136 PingFangTC-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red31\green31\blue36;\red115\green167\blue78;
+\red252\green95\blue163;\red65\green161\blue192;\red208\green168\blue255;\red208\green191\blue105;\red252\green106\blue93;
+\red0\green0\blue0;\red0\green0\blue0;\red255\green255\blue255;\red93\green216\blue255;\red103\green183\blue164;
+\red161\green103\blue230;}
+{\*\expandedcolortbl;;\csgenericrgb\c100000\c100000\c100000\c85000;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c44940\c65475\c30460;
+\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c25395\c63013\c75478;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c81498\c74939\c41233;\csgenericrgb\c98912\c41558\c36568;
+\csgray\c0\c0;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\csgenericrgb\c36295\c84643\c99897;\csgenericrgb\c40538\c71705\c64209;
+\csgenericrgb\c63232\c40219\c90115;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww27220\viewh11160\viewkind0
+\deftab791
+\pard\tx791\pardeftab791\pardirnatural\partightenfactor0
+
+\f0\fs32 \cf2 \cb3     \cf4 // 
+\f1 \'a8\'cf\'a5\'ce
+\f0  UITextField(frame:) 
+\f1 \'ab\'d8\'a5\'df\'a4\'40\'ad\'d3
+\f0  UITextField\cf2 \
+    
+\f2\b \cf5 let
+\f0\b0 \cf2  \cf6 myTextField\cf2  = \cf7 UITextField\cf2 (frame: \cf7 CGRect\cf2 (x: \cf8 0\cf2 , y: \cf8 0\cf2 , width: \cf8 200\cf2 , height: \cf8 50\cf2 ))\
+\
+    \cf4 // 
+\f1 \'a9\'7c\'a5\'bc\'bf\'e9\'a4\'4a\'ae\'c9\'aa\'ba\'b9\'77\'b3\'5d\'c5\'e3\'a5\'dc\'b4\'a3\'a5\'dc\'a4\'e5\'a6\'72
+\f0 \cf2 \
+    \cf6 myTextField\cf2 .placeholder = \cf9 "
+\f1 \'bd\'d0\'bf\'e9\'a4\'4a\'a4\'e5\'a6\'72
+\f0 "\cf2 \
+\
+    \cf4 // 
+\f1 \'bf\'e9\'a4\'4a\'ae\'d8\'aa\'ba\'bc\'cb\'a6\'a1
+\f0  
+\f1 \'b3\'6f\'c3\'e4\'bf\'ef\'be\'dc\'b6\'ea\'a8\'a4\'bc\'cb\'a6\'a1
+\f0 \cf2 \
+    myTextField.borderStyle = .RoundedRect\
+\
+    \cf4 // 
+\f1 \'bf\'e9\'a4\'4a\'ae\'d8\'a5\'6b\'c3\'e4\'c5\'e3\'a5\'dc\'b2\'4d\'b0\'a3\'ab\'f6\'b6\'73\'ae\'c9\'be\'f7
+\f0  
+\f1 \'b3\'6f\'c3\'e4\'bf\'ef\'be\'dc\'b7\'ed\'bd\'73\'bf\'e8\'ae\'c9\'c5\'e3\'a5\'dc
+\f0 \cf2 \
+    myTextField.clearButtonMode = .WhileEditing\
+\
+    \cf4 // 
+\f1 \'bf\'e9\'a4\'4a\'ae\'d8\'be\'41\'a5\'ce\'aa\'ba\'c1\'e4\'bd\'4c
+\f0  
+\f1 \'b3\'6f\'c3\'e4\'bf\'ef\'be\'dc
+\f0  
+\f1 \'be\'41\'a5\'ce\'bf\'e9\'a4\'4a
+\f0  Email 
+\f1 \'aa\'ba\'c1\'e4\'bd\'4c
+\f0 (
+\f1 \'b7\'7c\'a6\'b3
+\f0  @ 
+\f1 \'b8\'f2
+\f0  . 
+\f1 \'a5\'69\'a8\'d1\'bf\'e9\'a4\'4a
+\f0 )\cf2 \
+    myTextField.keyboardType = .EmailAddress\
+\
+    \cf4 // 
+\f1 \'c1\'e4\'bd\'4c\'a4\'57\'aa\'ba
+\f0  return 
+\f1 \'c1\'e4\'bc\'cb\'a6\'a1
+\f0  
+\f1 \'b3\'6f\'c3\'e4\'bf\'ef\'be\'dc
+\f0  Done\cf2 \
+    myTextField.returnKeyType = .Done\
+\
+    \cf4 // 
+\f1 \'bf\'e9\'a4\'4a\'a4\'e5\'a6\'72\'aa\'ba\'c3\'43\'a6\'e2
+\f0 \cf2 \
+    myTextField.textColor = UIColor.whiteColor()\
+\
+    \cf4 // UITextField 
+\f1 \'aa\'ba\'ad\'49\'b4\'ba\'c3\'43\'a6\'e2
+\f0 \cf2 \
+    myTextField.backgroundColor = UIColor.lightGrayColor()\
+\
+\cb10 \
+\
+
+\f1 \cf11 \cb12 \'a4\'e5\'a6\'72\'ae\'d8\'bf\'e9\'a4\'4a\'a7\'b9\'a6\'a8 \'bf\'e9\'a4\'4a\'ae\'d8\'b7\'7c\'a6\'db\'b0\'ca\'c1\'59\'a4\'55\'a5\'68  \'a8\'cf\'a5\'ceUITextField delegate\
+\
+
+\f2\b \cf5 \cb3 class
+\f0\b0 \cf2  \cf13 \cb3 AddItemTableViewCell\cf2 \cb3 : \cf7 UITableViewCell\cf2 ,\cf7 UITextFieldDelegate\cf2  \{
+\f1 \cf11 \cb12 \
+\
+\pard\tx791\pardeftab791\pardirnatural\partightenfactor0
+
+\f0 \cf14 \cb3 myTextField\cf2 \cb3 .\cf15 \cb3 delegate\cf2 \cb3  = 
+\f2\b \cf5 self
+\f0\b0 \cf2 \cb10 \
+\
+\pard\tx791\pardeftab791\pardirnatural\partightenfactor0
+
+\f2\b \cf5 \cb3 func
+\f0\b0 \cf2  \cf6 textFieldShouldReturn\cf2 (
+\f2\b \cf5 _
+\f0\b0 \cf2  textField: \cf7 UITextField\cf2 ) -> \cf7 Bool\cf2  \{\
+        textField.\cf15 \cb3 resignFirstResponder\cf2 \cb3 ()\
+        
+\f2\b \cf5 return
+\f0\b0 \cf2  
+\f2\b \cf5 false
+\f0\b0 \cf2 \
+    \}}

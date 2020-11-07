@@ -1,0 +1,178 @@
+{\rtf1\ansi\ansicpg950\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset136 PingFangTC-Regular;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red31\green31\blue36;\red252\green95\blue163;
+\red65\green161\blue192;\red208\green168\blue255;\red161\green103\blue230;\red252\green106\blue93;\red158\green241\blue221;
+\red103\green183\blue164;}
+{\*\expandedcolortbl;;\csgenericrgb\c100000\c100000\c100000\c85000;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c98839\c37355\c63833;
+\csgenericrgb\c25395\c63013\c75478;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c63232\c40219\c90115;\csgenericrgb\c98912\c41558\c36568;\csgenericrgb\c62145\c94386\c86819;
+\csgenericrgb\c40538\c71705\c64209;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh14280\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 \'a5\'d1
+\f1 view controller  
+\f0 \'b3\'73\'b1\'b5 segue \'b0\'b5\'c2\'e0\'b4\'ab\'b3\'f5\'b4\'ba\'b5\'65\'ad\'b1
+\fs48  
+\fs24 \
+\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f2 \cf2 \cb3     
+\f3\b \cf4 override
+\f2\b0 \cf2  
+\f3\b \cf4 func
+\f2\b0 \cf2  \cf5 tableView\cf2 (
+\f3\b \cf4 _
+\f2\b0 \cf2  tableView: \cf6 UITableView\cf2 , didSelectRowAt indexPath: \cf6 IndexPath\cf2 ) \{\
+        \cf7 performSegue\cf2 (withIdentifier: \cf8 "showDetail"\cf2 , sender: 
+\f3\b \cf4 nil
+\f2\b0 \cf2 )\
+    \}\
+    
+\f0 \cf0 \cb1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs36 \cf0 \'a5\'d1
+\f1 view controller  
+\f0 \'aa\'batableViewCell 
+\f1  
+\f0 \'b3\'73\'b1\'b5 segue \'b6\'c7\'ad\'c8\'a8\'ecview controller
+\fs24 \
+\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f3\b \cf4 \cb3 override
+\f2\b0 \cf2  
+\f3\b \cf4 func
+\f2\b0 \cf2  \cf5 prepare\cf2 (for segue: \cf6 UIStoryboardSegue\cf2 , sender: 
+\f3\b \cf4 Any
+\f2\b0 \cf2 ?) \{\
+        
+\f3\b \cf4 if
+\f2\b0 \cf2  segue.\cf7 identifier\cf2  \cf7 ==\cf2  \cf8 "showDetail"\cf2  \{\
+            
+\f3\b \cf4 if
+\f2\b0 \cf2  
+\f3\b \cf4 let
+\f2\b0 \cf2  dvc = segue.\cf7 destination\cf2  
+\f3\b \cf4 as
+\f2\b0 \cf2 ? \cf9 \cb3 DetailViewController\cf2 \cb3  \{\
+                
+\f3\b \cf4 if
+\f2\b0 \cf2  
+\f3\b \cf4 let
+\f2\b0 \cf2  selectedRow = \cf7 tableView\cf2 .\cf7 indexPathForSelectedRow\cf2 ?.\cf7 row\cf2 \{\
+                    dvc.\cf10 \cb3 infoFromViewOne\cf2 \cb3  = \cf10 \cb3 animalArray\cf2 \cb3 [selectedRow]\
+                \}\
+            \}\
+        \}\
+    \}
+\f0 \cf0 \cb1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\'a8\'cf\'a5\'cestoryboardId \'c2\'e0\'b3\'f5\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f2 \cf2 \cb3         
+\f3\b \cf4 let
+\f2\b0 \cf2  myview =  \cf6 UIStoryboard\cf2 (name: \cf8 "Main"\cf2 , bundle: 
+\f3\b \cf4 nil
+\f2\b0 \cf2 ).\cf7 instantiateViewController\cf2 (identifier:\cf8 "mySeccondView"\cf2 )\
+        \cf7 present\cf2 (myview, animated: 
+\f3\b \cf4 true
+\f2\b0 \cf2 , completion: 
+\f3\b \cf4 nil
+\f2\b0 \cf2 )
+\f0 \cf0 \cb1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\'a8\'cf\'a5\'cenavigation and storyboardID. \'c2\'e0\'b3\'f5\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f2 \cf2 \cb3         
+\f3\b \cf4 let
+\f2\b0 \cf2  myview =  \cf6 UIStoryboard\cf2 (name: \cf8 "Main"\cf2 , bundle: 
+\f3\b \cf4 nil
+\f2\b0 \cf2 ).\cf7 instantiateViewController\cf2 (identifier:\cf8 "mySeccondView"\cf2 )\
+\
+        \
+        
+\f3\b \cf4 self
+\f2\b0 \cf2 .\cf7 navigationController\cf2 ?.\cf7 pushViewController\cf2 (myview, animated: 
+\f3\b \cf4 true
+\f2\b0 \cf2 )
+\f0 \cf0 \cb1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\'a5\'cenavigationcontroller \'aa\'bd\'b1\'b5\'a6\'5e\'a8\'ec\'a4\'57\'a4\'40\'ad\'b6\
+\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f2 \cf2 \cb3  
+\f3\b \cf4 self
+\f2\b0 \cf2 .\cf7 navigationController\cf2 ?.\cf7 popViewController\cf2 (animated: 
+\f3\b \cf4 true
+\f2\b0 \cf2 )\
+\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f0 \cf0 \cb1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\'a6\'62\'a5\'ceprepare for segue \'c2\'e0\'b4\'ab\'ba\'f4\'ad\'b6\'ae\'c9\'a1\'43  \'a5\'fd\'a7\'50\'c2\'5f\'ac\'4fwhat cell u select\
+ \
+\pard\tx791\pardeftab791\pardirnatural\partightenfactor0
+
+\f2\fs32 \cf2 \cb3         
+\f3\b \cf4 if
+\f2\b0 \cf2  segue.\cf7 identifier\cf2  \cf7 ==\cf2  \cf8 "addOrderMemberSegue"\cf2  \{\
+            
+\f3\b \cf4 let
+\f2\b0 \cf2  dvc = segue.\cf7 destination\cf2  
+\f3\b \cf4 as
+\f2\b0 \cf2 ? \cf9 addOrderFromMemberViewController\cf2 \
+            \
+            
+\f3\b \cf4 let
+\f2\b0 \cf2  selectIndexPathRow = \cf10 myMemberttableViewCell\cf2 .\cf7 indexPathForSelectedRow\cf2 \
+            
+\f3\b \cf4 if
+\f2\b0 \cf2  
+\f3\b \cf4 let
+\f2\b0 \cf2  selectRow = selectIndexPathRow?.\cf7 row\cf2  \{\
+                dvc?.\cf10 nowMember\cf2  = \cf10 myMember\cf2 ?[selectRow]\
+                dvc?.\cf7 navigationItem\cf2 .\cf7 title\cf2  = \cf10 myMember\cf2 ?[selectRow].\cf10 name\cf2 \
+            \}\
+            \
+        \}
+\f0\fs24 \cf0 \cb1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
