@@ -1,0 +1,46 @@
+------------------------ 第一層MDI ---------------------
+
+            BookHighSearchForm myForm = new BookHighSearchForm();
+            myForm.MdiParent = this;
+            myForm.ShowDialog(); 		
+	
+------------------------第二層之後------------------------
+
+    *************原始主From**************
+
+        public MainForm()
+        {
+            InitializeComponent();
+        }
+      
+        private void tsmiBookList_Click(object sender, EventArgs e)
+        {
+            BookListForm bookListForm = new BookListForm();
+            bookListForm.MdiParent = this;
+            bookListForm.Show();
+        }
+
+
+    ************ 修改後***************
+
+        static MainForm mainForm;  // Create一個靜態MianFrom 常駐記憶體
+        private MainForm()         // 將主Form設為私有...不給外部Create
+        {
+            InitializeComponent();
+        }
+        public static MainForm CreateInstance()  //多一個靜態方法 create Form 第一層之後圴乎叫此方法
+        {
+            if (mainForm == null)
+                mainForm = new MainForm() ;
+            return mainForm;
+        }
+
+
+               --------- mdi Form ------
+
+            BookHighSearchForm myForm = new BookHighSearchForm();
+            myForm.MdiParent = MainForm.CreateInstance() ;
+            myForm.Show();
+
+
+

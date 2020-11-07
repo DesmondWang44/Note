@@ -1,0 +1,95 @@
+--------------------------------------------------  所有class 共用passSocere
+static 變數
+
+class student {
+   public static int  passSocre = 60
+
+}
+
+
+所有class 共用passSocere
+
+
+
+
+-------------------------------- ----------------------- class get set 
+private int  hp
+public int HP {
+    get { return hp }
+    set {
+        if (value > hp) {
+           return 0
+        } else {
+           return hp 
+        }
+    }		
+}
+
+
+
+----------------------------------------------------------  override virural  
+public override string move()   
+{
+	retruen "OOOOOO"
+}
+
+
+public virural string  move()
+{
+	return "XXXX"
+}
+
+
+
+------------------------------------------------------------------------------- enum
+
+****add new class          ,, enum 和 switch  很適合一起使用
+
+
+enum Direction
+{
+   UP,DOWN,LEFT,RIGHT	
+}
+=====
+Direction.UP  or Direction.DOWN   ........
+
+
+----------------------------------------------------------------------------- switch
+
+
+要加break .....
+
+switch (direction) 
+{
+   case 1:
+	y += 1;
+	break;
+   case 2:
+	y += 1;
+	break;
+   case 3:
+	y += 1;
+	break;
+   case 4:
+	y += 1;
+	break;
+}
+ 
+ enum version ......
+switch (direction) 
+{
+   case direction.UP:
+	y += 1;
+	break;
+   case direction.DOWN
+	y += 1;
+	break;
+   case direction.LEFT:
+	y += 1;
+	break;
+   case direction.RIGHT:
+	y += 1;
+	break;
+}
+
+

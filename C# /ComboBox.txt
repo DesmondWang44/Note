@@ -1,0 +1,40 @@
+--------------------------add combobox -----------------------------------------
+
+            List<BookType> myList1 = myList.Where(q => q.ParentId == 0 ).ToList();
+            cboList1.DisplayMember = "TypeName";
+            cboList1.ValueMember = "TypeId";
+            cboList1.DataSource = myList1;
+
+
+--------------------------change combox ----------------------------------------
+
+        private void cboList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboList1.SelectedValue == null)
+                return;
+            int myValue = (int)cboList1.SelectedValue;
+            List<BookType> myList2 = myList.Where(q => q.ParentId == myValue).ToList();
+            cboList2.DisplayMember = "TypeName";
+            cboList2.ValueMember = "TypeId";
+            cboList2.DataSource = myList2;
+        }
+
+
+
+--------------------------chose value -----------------------------------------
+
+        cboList2.SelectedValue;
+
+	cboList1.SelectedValue = myType.ParentId;
+
+
+---------------------------預設Row  ClassInfos is DataTable----------------------------------------------
+
+        DataRow row = dt_ClassInfos.newRow();
+        row["className"] = "---請選擇---"
+        row["clssId"] = 0
+        dt_ClassInfos.Rows.InsertAt(row,0)
+
+
+
+

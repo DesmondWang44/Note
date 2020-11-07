@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------------正常 未設建講子 Init
+
+
+Student myStudent = new Student() { myAddress = textAddress.Text , myAge = 12 , myName = textName.Text};
+
+
+
+-------------------------------------------------------------------------------------------------
+
+studends.Add(new Student()
+            {
+                myName = "Desmond",
+                myAddress = "Taiwan",
+                myAge = 12
+            });

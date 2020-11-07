@@ -1,0 +1,43 @@
+
+-------------------------------------------寫入本地資料----------------------------
+
+        public static void SetLoaclCache(string str)
+        {
+            using (FileStream fs = new FileStream(Config.CacheFile,FileMode.Create))
+            {
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.Default))
+                {
+                    sw.WriteLine(str);
+                }
+            }
+        }
+
+
+-------------------------------------------讀取資料並傳回資料----------------------------
+
+        public static string LoadLoaclCache()
+        {
+            string str = "";
+            using (FileStream fs = new FileStream(Config.CacheFile, FileMode.Open))
+            {
+                using (StreamReader sr = new StreamReader(fs,Encoding.Default))
+                {
+                    str = sr.ReadLine();
+                }
+            }
+            return str;
+        }
+
+
+-----------------------------------------  OpenFileDialog 資料夾 -----------------------
+
+        private void imgBook_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            DialogResult result = ofd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                imgBook.ImageLocation = ofd.FileName;
+            }
+
+        }

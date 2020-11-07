@@ -1,0 +1,60 @@
+------------------------------------取得選中的的值---------------------------
+
+        private void tsbtnUpdateBook_Click(object sender, EventArgs e)
+        {
+            if (dgvBookList.SelectedRows != null && dgvBookList.SelectedRows.Count > 0)
+            {
+                int row = Convert.ToInt32( dgvBookList.SelectedRows[0].Cells["BookId"].Value);
+                EditBookForm form = new EditBookForm(row);
+                form.MdiParent = MainForm.CreateInstance();
+                form.Show();
+            }           
+        }
+
+
+
+-------------------------------------DataGridView ComboBox ----------------------
+
+            DataGridViewComboBoxColumn cbo = dgvBookList.Columns["TypeId"] as DataGridViewComboBoxColumn;
+            cbo.ValueMember = "TypeId";
+            cbo.DisplayMember = "TypeName";
+            cbo.DataSource = bookTypeManager.GetBookTypeList();
+
+
+
+------------------------------------MouseButtons.Right 右鍵選中ROW------------------------
+
+        private void dgvBookList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                dgvBookList.ClearSelection();
+                dgvBookList.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+
+
+------------------------------------delete select row 刪除選中單行 -------------------------
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvBookList.SelectedRows[0];
+            dgvBookList.Rows.Remove(row);
+        }
+
+
+
+------------------------------------delete select row 刪除選中多行 -------------------------
+
+        foreach (DataGridViewRow row in dgvBookList.SelectedRows)
+        {
+        	if (!row.IsNewRow) // 如果不是新row才能刪除
+        		dgvBookList.Rows.Remove(row);
+
+        }
+
+
+
+
+

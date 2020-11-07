@@ -1,0 +1,11 @@
+------------------------MessageBox Warring ----------------------------
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("是否確定刪除?", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                DataGridViewRow row = dgvBookList.SelectedRows[0];
+                dgvBookList.Rows.Remove(row);
+            }
+        }

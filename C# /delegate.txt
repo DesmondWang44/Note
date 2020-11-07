@@ -1,0 +1,40 @@
+------------------------------Action ----------------------
+
+        public event Action<Models.Book> MyAction;
+
+        private void btnQry_Click(object sender, EventArgs e)
+        {
+           
+            Models.Book book = new Models.Book();
+            book.Author = txtAuthor.Text.Trim();
+            book.Publisher = txtPublisher.Text.Trim();
+            try
+            {
+                book.TypeId = (int)cboList2.SelectedValue;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            if (MyAction != null)
+                MyAction(book);
+  
+        }
+
+
+	-------------------------------
+
+        public void Search(Models.Book book)
+        {
+            dgvBookList.DataSource = bookManager.BookByParas(book);
+        }
+
+
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            BookHighSearchForm myForm = new BookHighSearchForm();
+            myForm.MyAction += Search;
+            myForm.MdiParent = MainForm.CreateInstance() ;
+            myForm.Show();
+        }
