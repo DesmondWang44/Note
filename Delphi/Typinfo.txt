@@ -1,0 +1,36 @@
+Delphi 使用 TypInfo 列出元件的屬性
+在 Form 上放入一個 TMemo
+
+uses
+  TypInfo;
+
+在 From Create 事件中加入
+
+procedure TForm1.FormCreate(Sender: TObject);
+var
+  PropList: PPropList;
+  Count, i: Integer;
+  PropInfo: PPropInfo;
+begin
+  Memo1.Clear;
+  Count := GetPropList(Memo1, PropList); // 取得 TMemo 的屬性
+  for i := 0 to Count -1 do begin
+    PropInfo := PropList[i];
+    // 印出屬性及類型
+    Memo1.Lines.Add(PropInfo.Name + ': ' + PropInfo.PropType^^.Name);
+  end;
+end;
+
+{ 
+Name: TComponentName
+Tag: Integer
+Left: Integer
+Top: Integer
+Width: Integer
+Height: Integer
+Cursor: TCursor
+Hint: String
+HelpType: THelpType
+HelpKeyword: String
+...
+}

@@ -1,0 +1,306 @@
+    function seek_data(p_kind,p_data : string) : integer;
+
+
+      X := 0;
+      X := seek_data('Y_day',Trim(work_data.Cells[0,i]));
+      if X <> 0 then begin
+         Work_CNC.Cells[T_Yesterday,i] := Trim(Y_day_list[X,1]); //昨天
+      end;
+
+
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+function TFORM_MAIN.seek_data(p_kind, p_data: string): integer;
+var
+
+   temp_str,temp_str1 : string;
+   temp_ans : integer;
+   up_point,m_point,low_point : integer;
+   I,J,K : integer;
+label
+   bottom;
+begin
+   temp_ans := 0;
+   up_point := 0;
+   m_point  := 0;
+   temp_str := p_data;
+   k := 0;
+   if p_kind = 'card' then begin
+      k := 1;
+      low_point := Card_num;
+   end;
+   if p_kind = 'palemp' then begin
+      k := 1;
+      low_point := palemp_num;
+   end;
+   if p_kind = 'worcod' then begin
+      k := 1;
+      low_point := worcod_num;
+   end;
+   if p_kind = 'depno' then begin
+      k := 1;
+      low_point := depno_num;
+   end;
+   if p_kind = 'MS' then begin
+      k := 1;
+      low_point := ms1_num;
+   end;
+   if p_kind = 'MS2' then begin
+      k := 1;
+      low_point := ms2_num;
+   end;
+   if p_kind = 'MS3' then begin
+      k := 1;
+      low_point := ms3_num;
+   end;
+   if p_kind = 'basembom' then begin
+      k := 1;
+      low_point := mbom_num;
+   end;
+   if p_kind = 'TOOLPTRN' then begin
+      k := 1;
+      low_point := TOOLPTRN_num;
+   end;
+   if p_kind = 'CUTTER' then begin
+      k := 1;
+      low_point := CUTTER_num;
+   end;
+   if p_kind = 'INSERTS' then begin
+      k := 1;
+      low_point := INSERTS_num;
+   end;
+   If p_kind = 'HOLDER' then begin
+      k := 1;
+      low_point := HOLDER_num;
+   end;
+   if p_kind = 'SubHolder' then begin
+      k := 1;
+      low_point := SubHolder_num;
+   end;
+   if p_kind = 'ACCESSORY' then begin
+      k := 1;
+      low_point := ACCESSORY_num;
+   end;
+   if p_kind = 'gds' then begin
+      k := 1;
+      low_point := gds_num;
+   end;
+
+   if p_kind = 'T_day' then begin
+      k := 1;
+      low_point := T_day_num;
+   end;
+   if p_kind = 'Y_day' then begin
+      k := 1;
+      low_point := Y_day_num;
+   end;
+   if p_kind = 'W_day' then begin
+      k := 1;
+      low_point := W_day_num;
+   end;
+   if p_kind = 'E_day' then begin
+      k := 1;
+      low_point := E_day_num;
+   end;
+   if p_kind = 'cncmat' then begin
+      k := 1;
+      low_point := cncmat_num;
+   end;
+
+   if p_kind = 'TOOLPTRN' then begin
+      temp_ans := 0;
+      for i := 1 to TOOLPTRN_num do begin
+         if temp_str = TOOLPTRN_list[i,0] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+      goto bottom;
+   end;
+   if p_kind = 'CUTTER' then begin
+      temp_ans := 0;
+      for i := 1 to CUTTER_num do begin
+         if temp_str = CUTTER_list[i,0] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+      goto bottom;
+   end;
+   if p_kind = 'INSERTS' then begin
+      temp_ans := 0;
+      for i := 1 to INSERTS_num do begin
+         if temp_str = INSERTS_list[i,0] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+      goto bottom;
+   end;
+   if p_kind = 'HOLDER' then begin
+      temp_ans := 0;
+      for i := 1 to HOLDER_num do begin
+         if temp_str = HOLDER_list[i,0] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+      goto bottom;
+   end;
+   if p_kind = 'SubHolder' then begin
+      temp_ans := 0;
+      for i := 1 to SubHolder_num do begin
+         if temp_str = SubHolder_list[i,0] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+     goto bottom;
+   end;
+   if p_kind = 'ACCESSORY' then begin
+      temp_ans := 0;
+      for i := 1 to ACCESSORY_num do begin
+         if temp_str = ACCESSORY_list[i,0] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+      goto bottom;
+   end;
+   if p_kind = 'gds' then begin
+      temp_ans := 0;
+      for i := 1 to gds_num do begin
+         if temp_str = gds_list[i,2] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+      goto bottom;
+   end;
+   if p_kind = 'T_day' then begin
+      temp_ans := 0;
+      for i := 1 to T_day_num do begin
+         if temp_str = T_day_list[i,0] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+      goto bottom;
+   end;
+   if p_kind = 'Y_day' then begin
+      temp_ans := 0;
+      for i := 1 to Y_day_num do begin
+         if temp_str = Y_day_list[i,0] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+      goto bottom;
+   end;
+   if p_kind = 'W_day' then begin
+      temp_ans := 0;
+      for i := 1 to W_day_num do begin
+         if temp_str = W_day_list[i,0] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+      goto bottom;
+   end;
+   if p_kind = 'E_day' then begin
+      temp_ans := 0;
+      for i := 1 to E_day_num do begin
+         if temp_str = E_day_list[i,0] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+      goto bottom;
+   end;
+   if p_kind = 'cncmat' then begin
+      temp_ans := 0;
+      for i := 1 to cncmat_num do begin
+         if temp_str = cncmat_list[i,0] then begin
+            temp_ans := i;
+            break;
+         end;
+      end;
+      result := temp_ans;
+      goto bottom;
+   end;
+
+   if p_kind = 'basembom' then begin
+      sys_uppoint := -1;
+      sys_lowpoint := -1;
+      for i := 0 to mbom_num - 1 do begin
+         if base_mbom.Cells[0,i] = temp_str then begin
+            temp_ans := 1;
+            if sys_uppoint = -1 then begin
+               sys_uppoint := i;
+               sys_lowpoint := mbom_num - 1;
+            end;
+         end
+         else begin
+            if sys_uppoint <> -1 then begin
+               sys_lowpoint := i - 1 ;
+               break;
+            end;
+         end;
+      end;
+      //goto bottom;
+   end;
+
+   while up_point < low_point do begin
+      m_point := cchlib.advance((up_point + low_point) / 2);
+      if p_kind = 'card'   then temp_str1 := card_list[m_point,0];
+      if p_kind = 'palemp' then temp_str1 := palemp_list[m_point,0];
+      if p_kind = 'worcod' then temp_str1 := worcod_list[m_point,0];
+      if p_kind = 'depno'  then temp_str1 := depno_list[m_point,0];
+      if p_kind = 'MS'     then temp_str1 := ms1_list[m_point,0];
+      if p_kind = 'MS2'    then temp_str1 := ms2_list[m_point,0];
+      if p_kind = 'MS3'    then temp_str1 := ms3_list[m_point,0];
+
+      if temp_str = temp_str1 then begin
+         temp_ans := m_point;
+         break;
+      end;
+      if temp_str > temp_str1 then begin
+         if up_point = m_point then begin
+            up_point := m_point + 1;
+         end
+         else begin
+            up_point := m_point;
+         end;
+      end;
+      if temp_str < temp_str1 then begin
+         if low_point = m_point then begin
+            low_point := m_point - 1;
+         end
+         else begin
+            low_point := m_point ;
+         end;
+      end;
+   end;
+   result := temp_ans;
+bottom:
+
+end;

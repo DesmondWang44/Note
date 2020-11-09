@@ -1,0 +1,27 @@
+   if MessageDlg('是否要更新【前產能】的內容?',mtConfirmation, [mbYes, mbNo], 0) = mrYes then begin
+      ary1 := 'update amssit set upqty = amqty + pmqty, amqty = 0 ,pmqty = 0';
+      temp_str := FormatDateTime('hh:mm:ss', Now);
+      ary1 := ary1 + ',abntim = ' + QuotedStr(temp_str);
+      temp_str := '';
+      temp_str := FormatDateTime('yyyy.mm.dd', Now);
+      ary1 := ary1 + ',abndat = ' + QuotedStr(temp_str);
+      Adoquery1.sql.clear;
+      Adoquery1.sql.Text := ary1;
+      Adoquery1.ExecSQL;
+      ShowMessage('更新成功');
+      Button1.OnClick(Self);
+   end;
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+
+     Application.MessageBox(pchar('請注意零件編號：“ '),'訊息',MB_OK+MB_ICONEXCLAMATION );
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+
+  	MessageDlg(‘ThisYearIs不是1995’, mtInformation, [mbOK], 0);

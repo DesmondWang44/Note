@@ -1,0 +1,10 @@
+注：在此仍不厭其煩的提醒：每個Package的Source最後都要在end.之前插入注冊(RegisterClass)/註銷(UnRegisterClass)自己類別的程序代碼
+
+
+----------------------RegisterClass-------------------------
+
+initalization   
+   RegisterClass(TForm2);
+
+
+

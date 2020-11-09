@@ -1,0 +1,14 @@
+
+Procedure TForm1.miViewToolsBarClick(Sender: TObject);
+
+Begin
+
+// 反向調整顯示工具列的選項
+
+miViewToolsBar.Checked := not miViewToolsBar.Checked;
+
+// 按所選取的方式, 來決定是否顯示工具列
+
+ToolBar1.Visible := miViewToolsBar.Checked;
+
+End;
