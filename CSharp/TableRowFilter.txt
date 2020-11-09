@@ -1,0 +1,7 @@
+ds_ps = dsB.Tables["ds"];
+ds_ps.DefaultView.RowFilter = "EmployeeNo4 <> ''";
+ds_ps = ds_ps.DefaultView.ToTable(); 
+
+
+ds_ps.DefaultView.RowFilter = $"EmployeeNo = '{onlineOrder.EmployeeNo}' AND BTime = '{onlineOrder.BTime}'";
+ds_Filter = ds_ps.DefaultView.ToTable();
