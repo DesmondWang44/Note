@@ -1,0 +1,47 @@
+-----------------------  table Filter  ------------ 
+
+ with DB do
+  begin
+    tbl_palemp.Filtered := false;
+    tbl_palemp.Filter := 'name = ' + quotedstr('desmond');
+    tbl_palemp.Filtered := true;
+  end;
+
+
+------------------------- 遍例   ------------------------------
+
+
+  with DB do
+  begin
+    tbl_palemp.First;
+    while not tbl_palemp.Eof do
+    begin
+      showmessage(tbl_palemp['name']);
+      tbl_palemp.Next
+    end;
+  end;
+
+
+
+------------------------------- insert row -----------------------
+
+var
+  name,sex : string;
+  birthday : String;
+  ID : integer ;
+begin
+  name := inputbox('name','Enter the name','預設名字');
+  sex := inputbox('sex','Enter the sex','預設名字');
+  birthday := inputbox('birthday','Enter the birthday','預設名字');
+
+  db.tbl_palemp.Sort := 'ID DESC';
+  db.tbl_palemp.First;
+  Id := db.tbl_palemp['ID'] + 1  ;
+
+
+  db.tbl_palemp.Insert;
+  db.tbl_palemp['name'] := name;
+  db.tbl_palemp['sex'] := sex;
+  db.tbl_palemp.Post;
+
+end;

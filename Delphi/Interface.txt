@@ -1,0 +1,29 @@
+類可以實現多個接口，而不是繼承多個 Delphi類不可能的類（ 多重繼承 ）。要實現此目的，必須在基類後面以逗號分隔添加所有接口的名稱。
+
+當然，實現類還必須定義每個接口聲明的函數。
+
+IInterface1 = interface
+    ['{A2437023-7606-4551-8D5A-1709212254AF}']
+    procedure Method1();
+    function Method2(): Boolean;
+end;
+
+IInterface2 = interface
+    ['{6C47FF48-3943-4B53-8D5D-537F4A0DEC0D}']
+    procedure SetValue(const aValue: TObject);
+    function  GetValue(): TObject;
+
+    property Value: TObject read GetValue write SetValue;
+end;
+
+TImplementer = class(TInterfacedObject, IInterface1, IInterface2)
+    // IInterface1
+    procedure Method1();
+    function Method2(): Boolean;
+
+    // IInterface2
+    procedure SetValue(const aValue: TObject);
+    function  GetValue(): TObject
+
+    property Value: TObject read GetValue write SetValue;
+end;

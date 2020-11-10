@@ -1,0 +1,136 @@
+MessageBox 常見用法
+MessageBox用法
+說明: MessageBox是個很常用的控制項，屬性比較多，底下列出了它的一些常用方法，及指出了它的一些應用場合。
+
+##ReadMore##
+1.MessageBox("這是一個最簡單的訊息方塊！");
+2.MessageBox("這是一個有標題的訊息方塊！","標題");
+3.MessageBox("這是一個確定 取消的訊息方塊！","標題", MB_OKCANCEL );
+4.MessageBox("這是一個警告的訊息方塊！","標題", MB_ICONEXCLAMATION );
+5.MessageBox("這是一個兩種屬性的訊息方塊！","標題", MB_ICONEXCLAMATION|MB_OKCANCEL );
+6.if(MessageBox("一種常用的應用","標題",MB_ICONEXCLAMATION|MB_OKCANCEL)==IDCANCEL)
+return;
+附其他常用屬性
+
+系統默認圖示，可在訊息方塊上顯示
+X錯誤 MB_ICONHAND, MB_ICONSTOP, and MB_ICONERROR
+?詢問 MB_ICONQUESTION
+!警告 MB_ICONEXCLAMATION and MB_ICONWARNING
+i信息 MB_ICONASTERISK and MB_ICONINFORMATION
+
+按鈕的形式
+MB_OK 確定
+MB_OKCANCEL 確定和取消
+MB_YESNO 是和否
+MB_YESNOCANCEL 是和否和取消
+
+返回值
+IDCANCEL 取消被選
+IDNO 否被選
+IDOK 確定被選
+IDYES 是被選
+
+
+------------------------------------
+
+MessageBox對話框是比較常用的一個信息對話框，其不僅能夠定義顯示的信息內容、信息提示圖標，而且可以定義按鈕組合及對話框的標題，是一個功能齊全的信息對話框信息提示圖標，而且可以定義按鈕組合及對話框的標題，是一個功能齊全的信息對框。
+
+   1、函數原型及參數
+   function MessageBox(hWnd: HWND; Text, Caption: PChar; Type: Word): Integer;
+   hWnd：對話框父窗口句柄，對話框顯示在Delphi窗體內，可使用窗體的Handle屬性，否則可用0，使其直接作為桌面窗口的子窗口。
+   Text：欲顯示的信息字符串。
+   Caption：對話框標題字符串。
+   Type：對話框類型常量。
+   該函數的返回值為整數，用於對話框按鈕的識別。
+   2、類型常量
+   對話框的類型常量可由按鈕組合、缺省按鈕、顯示圖標、運行模式四種常量組合而成。
+   （1）按鈕組合常量
+   MB_OK = $00000000;                   //一個確定按鈕
+   MB_OKCANCEL = $00000001;             //一個確定按鈕，一個取消按鈕
+
+ 
+
+   MB_ABORTRETRYIGNORE = $00000002;     //一個異常終止按鈕，一個重試按鈕，一個忽略按鈕
+   MB_YESNOCANCEL = $00000003;          //一個是按鈕，一個否按鈕，一個取消按鈕
+   MB_YESNO = $00000004;                //一個是按鈕，一個否按鈕
+   MB_RETRYCANCEL = $00000005;          //一個重試按鈕，一個取消按鈕
+   （2）缺省按鈕常量
+   MB_DEFBUTTON1 = $00000000;           //第一個按鈕為缺省按鈕
+   MB_DEFBUTTON2 = $00000100;           //第二個按鈕為缺省按鈕
+   MB_DEFBUTTON3 = $00000200;           //第三個按鈕為缺省按鈕
+   MB_DEFBUTTON4 = $00000300;           //第四個按鈕為缺省按鈕
+
+
+   （3）圖標常量
+   MB_ICONHAND = $00000010;                //「×」號圖標
+   MB_ICONQUESTION = $00000020;            //「？」號圖標
+   MB_ICONEXCLAMATION = $00000030;         //「！」號圖標
+   MB_ICONASTERISK = $00000040;            //「i」圖標
+   MB_USERICON = $00000080;                //用戶圖標
+   MB_ICONWARNING = MB_ICONEXCLAMATION;    //「！」號圖標
+   MB_ICONERROR = MB_ICONHAND;             //「×」號圖標
+   MB_ICONINFORMATION = MB_ICONASTERISK;   //「i」圖標
+
+   MB_ICONSTOP = MB_ICONHAND;              //「×」號圖標
+   （4）運行模式常量
+   MB_APPLMODAL = $00000000;         //應用程序模式，在未結束對話框前也能切換到另一應用程序
+   MB_SYSTEMMODAL = $00001000;       //系統模式，必須結束對話框後，才能做其他操作
+   MB_TASKMODAL = $00002000;         //任務模式，在未結束對話框前也能切換到另一應用程序
+   MB_HELP = $00004000;              //Help Button
+   3、函數返回值
+   0                        //對話框建立失敗
+   idOk = 1                 //按確定按鈕
+
+ 
+
+   idCancel = 2             //按取消按鈕
+   idAbout = 3              //按異常終止按鈕
+   idRetry = 4              //按重試按鈕
+   idIgnore = 5             //按忽略按鈕
+   idYes = 6                //按是按鈕
+   idNo = 7                 //按否按鈕 
+
+
+消息框是個很常用的控件，屬性比較多，本文列出了它的一些常用方法，及指出了它的一些應用場合。
+
+1.最簡單用法,不帶圖形
+
+MessageBox(0,'不同意','提示',MB_OK);
+
+MessageBox(0,'不同意','提示',MB_OKCANCEL );
+
+2.警告對話框:
+
+MessageBox(0,'密碼不能為空,請務必輸入密碼','警告',MB_ICONEXCLAMATION);
+
+3.提示信息對話框:
+
+MessageBox(0,'密碼不能為空,請務必輸入密碼','提示',MB_ICONASTERISK and MB_ICONINFORMATION);
+
+4.複雜用法:
+
+MessageBox(Handle, PChar('進程' + Listview1.Selected.caption +'不能被結束!'), PChar('提示'), MB_ICONEXCLAMATION);
+
+附常用屬性
+
+系統默認圖標，可在消息框上顯示
+X錯誤 MB_ICONHAND, MB_ICONSTOP, and MB_ICONERROR
+?詢問 MB_ICONQUESTION
+!警告 MB_ICONEXCLAMATION and MB_ICONWARNING
+i信息 MB_ICONASTERISK and MB_ICONINFORMATION
+按鈕的形式
+MB_OK   默認
+MB_OKCANCEL 確定取消
+MB_YESNO 是否
+MB_YESNOCANCEL 是否取消
+
+返回值
+IDCANCEL 取消被選
+IDNO 否被選
+IDOK 確定被選
+IDYES 是被選
+
+補充：
+以上消息框的用法是在Delphi中的應用，如果不是，則要MessageBox(NULL,"ddd","ddd",MB_OK);   或MessageBox(hWnd,"ddd","ddd",MB_OK); hWnd為某窗口的句柄，或者直接用AfxMessageBox。
+
+if messagebox(handle,pchar('要更新數？'),pchar('提示'),MB_yesno+MB_ICONASTERISK)   =   ID_yes   then

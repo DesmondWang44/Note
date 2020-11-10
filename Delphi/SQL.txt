@@ -1,0 +1,41 @@
+-------------------------------日期轉換-------------------------
+
+print convert(varchar(19),getdate()) 
+print convert(varchar(10),getdate(),110) 
+print convert(varchar(11),getdate(),106) 
+print convert(varchar(24),getdate(),113)
+
+
+
+-------------------------------加日期-----------------------------
+
+select dateadd(day,2,'2004-10-15')
+
+select datediff(day,'2004-09-01','2004-09-18') --返回：17 
+
+SELECT DATEPART(month, '2004-10-15') --返回 10
+
+SELECT datename(weekday, '2004-10-15') --返回：星期五
+
+select 本年第多少周=datename(week,getdate())
+
+select 當前日期=convert(varchar(10),getdate(),120)
+
+DateDiff('s','2005-07-20','2005-7-25 22:56:32')返回值為 514592 秒
+
+DateDiff('d','2005-07-20','2005-7-25 22:56:32')返回值為 5 天
+
+select datename(yy,getdate()) + '年' +
+       datename(mm,getdate()) + '月' + 
+       datename(dd,getdate()) + '日' +
+       datename(weekday,getdate()) +
+       case when datename(hh,getdate()) < 12 then '上午' else '下午' end
+
+
+
+原文見:SQL Server 比較日期大小的方法
+
+CONVERT() 函式是把日期轉換為新資料型別的通用函式。
+CONVERT() 函式可以用不同的格式顯示日期/時間資料。
+語法:CONVERT(data_type(length),data_to_be_converted,style)
+其中,data_type(length)規定目標資料型別(帶有可選的長度)data_to_be_converted 含有需要轉換的值 style規定日期時間的輸出格式

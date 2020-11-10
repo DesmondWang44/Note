@@ -1,0 +1,60 @@
+--------------------------No RegisterClass need to uses
+
+員工查詢      query_employee_Unit
+零件查詢      material_query_Unit
+日期選擇表    sw_Unit4
+
+
+功能類 ******* sys_Unit ********
+	RoundValue  四捨五入
+	HM_upload_file
+	flowno    序號+1
+	whereorand   回傳string  where or and
+	add_log    寫入LOG檔
+	monthbetween  計算二日隔幾月
+	ddate    日期相差
+	CDateMG  西元轉民國
+	CDateCE  民國轉西元
+	chk_Kms
+	add_km
+	add_zoo
+
+
+
+--------------------------DataPicker--------------------------------------
+uses sw_Unit
+
+form3 := TForm3.Create(self) ;
+try
+	if Form3.showmodal = mrok then
+		begin 
+			maskdate.text:= add_zoo(inttostr(form3.calendarl1.yearROC),3)
+			+add_zoo(inttostr(Form3.calendarl1.month),2)
+			+add_zoo(inttostr(From3.calendarl1.day),2);
+		end;
+	finally
+		Form3.free;
+	end;
+end;
+
+
+
+	
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

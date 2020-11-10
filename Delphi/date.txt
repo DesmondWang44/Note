@@ -1,0 +1,27 @@
+---------------------------------------------------------
+
+var
+   i,k,x: integer;
+   temp_data : TDateTime;
+   Y,W,D : Word;
+begin
+   T_day  := FormatDateTime('yyyymmdd',Now);
+   Y_day := FormatDateTime('yyyymmdd',Now-1);
+
+   Y := YearOf(Now);
+   W := WeekOf(Now);
+   W := W - 1;
+   D := 1;
+   temp_data := StartOfAWeek(Y,W,D);
+   B_day := FormatDateTime('yyyymmdd',temp_data);
+   D := 7;
+   temp_data := StartOfAWeek(Y,W,D);
+   E_day := FormatDateTime('yyyymmdd',temp_data);
+
+
+
+
+-----------------------------------------------------------
+
+   S_Bdate.Text := FormatDateTime('yyyy-mm-dd',S_date.DateTime);
+   T_date := FormatDateTime('mm.dd',S_date.DateTime);

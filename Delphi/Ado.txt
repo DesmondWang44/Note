@@ -1,0 +1,27 @@
+----------------------Query-------------------
+
+   ary1 := 'select machine_name,status,status1 from OnlineDevice order by machine_name';
+   Adoquery3.sql.clear;
+   Adoquery3.sql.add(ary1);
+   ADOQuery3.Open;
+   if not ADOQuery3.Eof then setlength(ms2_list,ADOQuery3.RecordCount + 1);
+   k := 0;
+   while not ADOQuery3.Eof do begin
+      k := k + 1;
+      setlength(ms2_list[k],3);
+      ms2_list[k,0] := Trim(ADOQuery3.fieldbyname('machine_name').AsString);
+      ms2_list[k,1] := Trim(ADOQuery3.fieldbyname('status').AsString);
+      ms2_list[k,2] := Trim(ADOQuery3.fieldbyname('status1').AsString);
+      ADOQuery3.Next;
+   end;
+   ms2_num := k;
+
+
+--------------------------update , insert -------------------
+
+   ary1 := 'update amssit set stats = ' + QuotedStr(P_stats);
+   ary1 := ary1 + ' where workgroup = ' + QuotedStr('101');
+   ary1 := ary1 + ' and sitecode = ' + QuotedStr(P_sitecode);
+   Adoquery1.sql.clear;
+   Adoquery1.sql.Text := ary1;
+   Adoquery1.ExecSQL;

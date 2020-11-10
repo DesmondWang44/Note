@@ -1,0 +1,12 @@
+  try
+    // Execute code that uses the new object and prepares it for the caller.
+    Result.Add('One');
+    MightThrow;
+  except
+    // If execution reaches this point, then an exception has occurred. We cannot
+    // know how to handle all possible exceptions, so we merely clean up the resources
+    // allocated by this function and then re-raise the exception so the caller can
+    // choose what to do with it.
+    Result.Free;
+    raise;
+  end;

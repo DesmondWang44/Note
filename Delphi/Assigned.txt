@@ -1,0 +1,22 @@
+Delphi Assigned 用來判斷對象是否被創建
+用法：
+在 需要多次創建並釋放一個對象時使用時：
+先確保這個對象上次的分配的內存已經被釋放
+
+ var
+  StrList : TStringList;
+begin
+  if Assigned(StrList) then
+  begin
+    FreeAndNil(StrList);
+    {
+      還有FreeAndNil有時候 會報錯，
+      可以使用這個代替
+       StrList.Free;
+       StrList := nil;  //nil 是必不可少的，否則 下次使用 Assigned 就起不到想要的作用
+    }
+  end;
+  StrList := TStringList.Create;
+  StrList.Add('a');
+  FreeAndNil(StrList);
+end;
