@@ -1,0 +1,12 @@
+
+---------------------------判斷時間間隔--------------------------
+
+double goOn;
+DateTime setDateS, setDateE;
+setDateS = Convert.ToDateTime(HolidayDateS +" " + HolidayTimeS);
+setDateE = Convert.ToDateTime(HolidayDateE +" " + HolidayTimeE);
+goOn = new TimeSpan(setDateS.Ticks - setDateE.Ticks).Days;
+
+
+
+--------------------------------------------------------
