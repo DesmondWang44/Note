@@ -7,6 +7,27 @@ setDateS = Convert.ToDateTime(HolidayDateS +" " + HolidayTimeS);
 setDateE = Convert.ToDateTime(HolidayDateE +" " + HolidayTimeE);
 goOn = new TimeSpan(setDateS.Ticks - setDateE.Ticks).Days;
 
+-----------------------------判斷時間間隔---------------------------
+protected static double Get_DateDiff(DateTime Sdate, DateTime Edate, string Flag)
+    {
+      TimeSpan t = Edate - Sdate;
+      long Result = 0;
 
-
---------------------------------------------------------
+      switch (Flag)
+      {
+        case "sec"://傳回間隔的秒數
+          Result = (long)t.TotalSeconds;
+          break;
+        case "day"://傳回間隔的天數
+          Result = (long)t.TotalDays;
+          break;
+        case "min": //傳回間隔的分鐘數
+          Result = (long)t.TotalMinutes;
+          break;
+        case "hour": //傳回間隔的小時數
+          Result = (long)t.TotalHours;
+          break;
+      }
+      return Result;  // 回傳double 
+    }
+}
