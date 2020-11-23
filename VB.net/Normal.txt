@@ -1,0 +1,23 @@
+-------------------- 同 C#  coutinue -----------------
+
+
+Continue Do
+
+
+Module loops
+   Sub Main()
+      ' local variable definition '
+      Dim a As Integer = 10
+      Do
+          If (a = 15) Then
+              ' skip the iteration '
+              a = a + 1
+              Continue Do
+          End If
+          Console.WriteLine("value of a: {0}", a)
+          a = a + 1
+      Loop While (a < 20)
+      Console.ReadLine()
+   End Sub
+End Module//原文出自【易百教程】，商业转载请联系作者获得授权，非商业请保留原文链接：https://www.yiibai.com/vb.net/vb.net_continue_statement.html
+
