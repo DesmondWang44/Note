@@ -31,3 +31,13 @@ protected static double Get_DateDiff(DateTime Sdate, DateTime Edate, string Flag
       return Result;  // 回傳double 
     }
 }
+
+------------------------------日期轉   星期 -------------------
+
+dt = DateTime.Today.DayOfWeek.ToString();
+
+--------------------------------------------------------------------
+
+
+
+  

@@ -1,0 +1,24 @@
+switch (setDate)
+      {
+        case "Monday":
+          weekOfDay = "一";
+          break;
+        case "Tuesday":
+          weekOfDay = "二";
+          break;
+        case "Wednesday":
+          weekOfDay = "三";
+          break;
+        case "Thursday":
+          weekOfDay = "四";
+          break;
+        case "Friday":
+          weekOfDay = "五";
+          break;
+        case "Saturday":
+          weekOfDay = "六";
+          break;
+        case "Sunday":
+          weekOfDay = "日";
+          break;     
+      } 
