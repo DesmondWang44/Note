@@ -1,0 +1,93 @@
+if (getResult.Rows.Count > 0)  
+      {
+
+        Excel.Application excelApp;
+        Excel._Workbook wBook;
+        Excel._Worksheet wSheet;
+        Excel.Range wRange;
+
+
+        // 開啟一個新的應用程式
+        excelApp = new Excel.Application();
+
+        // 讓Excel文件可見
+        //  excelApp.Visible = true;
+
+        // 停用警告訊息
+        excelApp.DisplayAlerts = false;
+
+        // 加入新的活頁簿
+        excelApp.Workbooks.Add(Type.Missing);
+
+
+        // 引用第一個活頁簿
+        wBook = excelApp.Workbooks[1];
+
+        // 設定活頁簿焦點
+        wBook.Activate();
+
+
+        excelApp.Cells[1, 1] = "駕駛員編";
+        excelApp.Cells[1, 2] = "駕駛姓名";
+        excelApp.Cells[1, 3] = "路線";
+        excelApp.Cells[1, 4] = "駕駛職稱";
+        excelApp.Cells[1, 5] = "駕駛工時";
+        excelApp.Cells[1, 6] = "達成率A";
+        excelApp.Cells[1, 7] = "總工時(含備勤)";
+        excelApp.Cells[1, 8] = "達成率B";      
+
+        this.pgbStats.Maximum = getResult.Rows.Count;     
+        for (int i = 0; i < getResult.Rows.Count; i++)
+        {
+          pgbStats.Value = i;
+          excelApp.Cells[1 + i + 1, 1] = "'" + getResult.Rows[i]["EmpNo"].ToString();
+          excelApp.Cells[1 + i + 1, 2] = getResult.Rows[i]["EmpName"].ToString();
+          excelApp.Cells[1 + i + 1, 3] = getResult.Rows[i]["Profession_Name"].ToString();
+          excelApp.Cells[1 + i + 1, 4] = getResult.Rows[i]["Deptname"].ToString();
+          excelApp.Cells[1 + i + 1, 5] = getResult.Rows[i]["Ahour"].ToString();
+          excelApp.Cells[1 + i + 1, 6] = getResult.Rows[i]["AchAhour"].ToString();
+          excelApp.Cells[1 + i + 1, 7] = getResult.Rows[i]["CAhour"].ToString();
+          excelApp.Cells[1 + i + 1, 8] = getResult.Rows[i]["AchCAhour"].ToString();         
+        }
+        try
+        {
+          SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+          saveFileDialog1.Filter = "xlsx files (*.xlsx)|*.xlsx";
+          
+          saveFileDialog1.FileName = "即時工時控管報表";
+        
+        
+
+          saveFileDialog1.FilterIndex = 2;
+          saveFileDialog1.RestoreDirectory = true;
+          if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+          {
+            string fileName = saveFileDialog1.FileName;
+            //另存活頁簿
+            wBook.SaveAs(fileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+
+            MessageBox.Show("完成");
+          }
+
+
+        }
+        catch (Exception ex)
+        {
+          MessageBox.Show("儲存檔案出錯，檔案可能正在使用" + Environment.NewLine + ex.Message);
+        }
+
+        //關閉活頁簿
+        wBook.Close(false, Type.Missing, Type.Missing);
+
+        //關閉Excel
+        excelApp.Quit();
+
+        //釋放Excel資源
+        System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+        wBook = null;
+        wSheet = null;
+        wRange = null;
+        excelApp = null;
+
+      }
