@@ -40,4 +40,15 @@ dt = DateTime.Today.DayOfWeek.ToString();
 
 
 
+------------------------------ check DateTime   -----------------------
+
+DateTime temp;
+if (DateTime.TryParse(setArrive, out temp) )
+{
+   // true
+}
+
+
+
+
   

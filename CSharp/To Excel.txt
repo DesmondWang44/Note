@@ -1,3 +1,6 @@
+using Excel = Microsoft.Office.Interop.Excel;
+
+
 if (getResult.Rows.Count > 0)  
       {
 
