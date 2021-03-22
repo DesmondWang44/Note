@@ -1,3 +1,16 @@
+------------------------------
+string strDate = "2014-4-3";
+DateTime dtDate;
+
+if (DateTime.TryParse(strDate, out dtDate))
+{
+    Console.WriteLine(dtDate);
+}
+else
+{
+    throw new Exception("Error！");
+}
+
 
 ---------------------------判斷時間間隔--------------------------
 

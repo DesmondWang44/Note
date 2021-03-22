@@ -1,3 +1,8 @@
+-----------------------取進位 四捨五入 --------------------------
+
+Math.Round(driverMinP / 60 + (perDayTime * HDays) / 222 * 100, 2, MidpointRounding.AwayFromZero);
+
+
 --------------------------------------------------  所有class 共用passSocere
 static 變數
 
@@ -91,5 +96,7 @@ switch (direction)
 	y += 1;
 	break;
 }
+-------------------VB ritchBox 斷行--------------------------
 
+Chr(13)+Chr(10)
 

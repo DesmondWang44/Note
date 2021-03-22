@@ -1,5 +1,26 @@
+***************************DatePart****************************
+Select getdate()
+, DatePart(year, getdate()) as '年'
+, DatePart(month, getdate()) as '月'
+, DatePart(day, getdate()) as '日'
+, DatePart(dayofyear, getdate()) as '本年一月一號至今的天數'
+, DatePart(week , getdate()) as '第N週'
+, DatePart(weekday , getdate()) as '星期幾(代號)' --星期日 = 1
+             --星期一 = 2
+             --星期二 = 3
+             --星期三 = 4
+             --星期四 = 5
+             --星期五 = 6
+             --星期六 = 7
+, DATENAME(Weekday, GETDATE()) as '星期幾'
+, DatePart(hour, getdate()) as '時'
+, DatePart(minute, getdate()) as '分'
+, DatePart(second, getdate()) as '秒'
+, DatePart(millisecond, getdate()) as '毫秒'
 
------------------------------  DATE
+
+
+***************************** DATE  *******************************
 
 select DATEDIFF ( D , '2020/01/01' , '2020/01/05' )   
 
