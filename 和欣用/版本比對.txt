@@ -1,0 +1,51 @@
+	string Ver = "20210122";
+
+
+
+    private void Frm_Main_Load(object sender, EventArgs e)
+    {
+      string ary1;
+      DataSet dsDes;
+      ary1 = "select Ver from Ftp_System where FileName = 'VCCar_01001.exe'";
+      dsDes = new dm_cls().exeQuery_hr(ary1, "ds");
+
+      if (dsDes.Tables["ds"].Rows.Count > 0)
+      {
+        if (dsDes.Tables["ds"].Rows[0]["Ver"].ToString() != Ver)
+        {
+          MessageBox.Show(Ver + "版與現行版本不符,請確認");
+          Application.Exit();
+        }
+      }
+      else
+      {
+        MessageBox.Show("尚未設定資料庫版本,程式將關閉");
+        Application.Exit();
+      }
+                   
+
+      this.Text = this.Text + "    Ver:" + Ver;
+    }
+
+
+
+============================SQL Connection===================================
+
+    private SqlConnection conn_hr = new SqlConnection(
+    "workstation id=transaction;packet size=4096;user id=sa;data source='192.168.1.6';" +
+    "persist security info=False;initial catalog=hr;password=ruh0y@ngfu;Connect Timeout=600");
+
+    /// <summary>
+    /// 查詢 hr
+    /// </summary>
+    /// <param name="commstring"></param>
+    /// <param name="tablename"></param>
+    /// <returns></returns>
+    public DataSet exeQuery_hr(string commstring, string tablename)
+    {
+      System.Data.SqlClient.SqlDataAdapter dal = new SqlDataAdapter(commstring, conn_hr);
+      DataSet ds1 = new DataSet();
+      dal.Fill(ds1, tablename);
+      ds1.Dispose();
+      return ds1;
+    }

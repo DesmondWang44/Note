@@ -1,0 +1,10 @@
+
+===============================================  寫入TXT ===============================================
+
+FileInfo f = new FileInfo("C:/Desmond/Test/Data/" + DateTime.Now.ToString("yyyyMMdd-HHmmss.TXT"));
+      StreamWriter sw = f.AppendText();
+      sw.Write(psql);
+      sw.WriteLine();
+      sw.Flush();
+      sw.Close();
+======================================================================================
