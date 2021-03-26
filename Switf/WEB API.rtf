@@ -1,0 +1,81 @@
+{\rtf1\ansi\ansicpg950\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red252\green95\blue163;\red31\green31\blue36;\red255\green255\blue255;
+\red252\green106\blue93;\red103\green183\blue164;\red115\green167\blue78;\red208\green168\blue255;\red161\green103\blue230;
+\red158\green241\blue221;}
+{\*\expandedcolortbl;;\csgenericrgb\c98839\c37355\c63833;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c100000\c100000\c100000\c85000;
+\csgenericrgb\c98912\c41558\c36568;\csgenericrgb\c40538\c71705\c64209;\csgenericrgb\c44940\c65475\c30460;\csgenericrgb\c81681\c65692\c99927;\csgenericrgb\c63232\c40219\c90115;
+\csgenericrgb\c62145\c94386\c86819;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww24180\viewh13060\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 WEB API. JSon \
+\
+\
+\pard\tx791\pardeftab791\pardirnatural\partightenfactor0
+
+\f1\b\fs32 \cf2 \cb3 let
+\f2\b0 \cf4  myURLString = \cf5 "https://kfl.azurewebsites.net/api/MyAPI?memberId=\cf4 \\(\cf6 userid\cf4 )\cf5 &workId=\cf4 \\(\cf6 MasterCode\cf4 )\cf5 &his=f"\cf4 \
+        \cf7 //APIHistorySaleList\cf4 \
+        
+\f1\b \cf2 let
+\f2\b0 \cf4  session = \cf8 URLSession\cf4 .\cf9 shared\cf4 \
+        
+\f1\b \cf2 if
+\f2\b0 \cf4  
+\f1\b \cf2 let
+\f2\b0 \cf4  url = \cf8 URL\cf4 (string: myURLString) \{\
+            (session.\cf9 dataTask\cf4 (with: url) \{ (data, 
+\f1\b \cf2 _
+\f2\b0 \cf4 , err) 
+\f1\b \cf2 in
+\f2\b0 \cf4 \
+                
+\f1\b \cf2 if
+\f2\b0 \cf4  data \cf9 !=\cf4  
+\f1\b \cf2 nil
+\f2\b0 \cf4  \cf9 &&\cf4  err \cf9 ==\cf4  
+\f1\b \cf2 nil
+\f2\b0 \cf4  \{\
+                    
+\f1\b \cf2 let
+\f2\b0 \cf4  decoder = \cf8 JSONDecoder\cf4 ()\
+                    
+\f1\b \cf2 do
+\f2\b0 \cf4 \{\
+                        
+\f1\b \cf2 let
+\f2\b0 \cf4  myResult = 
+\f1\b \cf2 try
+\f2\b0 \cf4  decoder.\cf9 decode\cf4 (\cf10 APIHistorySaleList\cf4 .
+\f1\b \cf2 self
+\f2\b0 \cf4 , from: data!)\
+                        \cf8 DispatchQueue\cf4 .\cf9 main\cf4 .\cf9 async\cf4  \{\
+                            
+\f1\b \cf2 self
+\f2\b0 \cf4 .\cf6 myTableView\cf4 .\cf9 refreshControl\cf4 ?.\cf9 endRefreshing\cf4 ()\
+                            
+\f1\b \cf2 self
+\f2\b0 \cf4 .\cf6 myDetailHistoryList\cf4  = myResult.\cf6 Data\cf4 \
+                            
+\f1\b \cf2 if
+\f2\b0 \cf4  
+\f1\b \cf2 let
+\f2\b0 \cf4  myStoreName = myResult.\cf6 StoreName\cf4  \{\
+                                
+\f1\b \cf2 self
+\f2\b0 \cf4 .\cf6 MasterStoreName\cf4  = myStoreName\
+                            \}\
+                            
+\f1\b \cf2 self
+\f2\b0 \cf4 .\cf6 myTableView\cf4 .\cf9 reloadData\cf4 ()\
+                        \}\
+                    \}
+\f1\b \cf2 catch
+\f2\b0 \cf4 \{\
+                        \
+                    \}\
+                \}\
+            \}).\cf9 resume\cf4 ()\
+        \}}
