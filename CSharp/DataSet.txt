@@ -1,0 +1,29 @@
+-------------------Add DataSet--------------
+
+
+      DataSet ds_Temp = new DataSet();//建立DataSet
+      DataTable dt = new DataTable("ds");//建立一個名為Table的DataTalbe
+      dt.Columns.Add("LineIds", typeof(string));
+      dt.Columns.Add("BranchNo", typeof(string));
+      dt.Columns.Add("Direction", typeof(string));     
+      dt.Columns.Add("Week", typeof(string));      
+      dt.Columns.Add("Hour", typeof(string));
+      dt.Columns.Add("Time", typeof(string));      
+      ds_Temp.Tables.Add(dt);
+      ds_Temp.AcceptChanges();
+
+
+
+	      DataRow row;
+              row = ds_Temp.Tables["ds"].NewRow();
+              row["EmployeeNo"] = EmployeeNo;
+              row["DeptNo"] = DeptNo;
+              row["Profession_Code"] = Profession_Code;
+              row["DT"] = DT;
+              row["LineId"] = LineIdS;
+              row["BDate"] = BDateS;
+              ds_Temp.Tables["ds"].Rows.Add(row);
+              ds_Temp.AcceptChanges();
+
+
+---------------------------------------------------
