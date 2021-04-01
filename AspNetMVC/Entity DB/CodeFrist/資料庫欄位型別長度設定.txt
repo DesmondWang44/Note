@@ -1,0 +1,29 @@
+
+using System.ComponentModel.DataAnnotations;
+
+
+
+	[Key]
+        public int id { get; set; }
+
+        [StringLength(3)]
+        public string codekind { get; set; }
+
+        [StringLength(30)]
+        public string code { get; set; }               //  code 的第二碼'P'為購物金專用 
+
+        [StringLength(40)]
+        [DisplayName("分類")]
+        public string codsc { get; set; }
+
+        [StringLength(3)]
+        public string control { get; set; } //E:總進貨  P:淨利 S:總銷售 I:庫存  
+
+        [StringLength(40)]
+        public string codeno { get; set; }
+
+        [StringLength(1)]
+        public string used { get; set; }
+
+        [StringLength(200)]
+        public string remark { get; set; }
