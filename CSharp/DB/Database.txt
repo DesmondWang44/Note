@@ -1,0 +1,36 @@
+----------------------------------case end--------------------------------
+
+select BookId, a.TypeId, BookTitle, BookImage, Price, Author,  Publisher,IsTop, IsValid, Number,
+ (case IsTop 
+  when 1 then '¬O'
+  else '§_'  
+ end) as isTop
+ from Book a 
+ inner join BookType b
+ on a.TypeId = b.TypeId
+ where a.TypeId = 7
+
+
+-----------------------------------SqlParameter  "like" -----------------------------------
+
+            sql += string.IsNullOrEmpty(book.BookTitle) ? "" : " and a.BookTitle like @booktitle";
+            sql += string.IsNullOrEmpty(book.Author) ? "" : " and a.Author like @author ";
+            sql += book.TypeId == 0 ? "" : " and a.TypeId = @typeid";  
+
+            SqlParameter[] paras =
+                {
+                new SqlParameter("@booktitle",'%'+book.BookTitle+'%'),
+                new SqlParameter("@Author",'%'+book.Author+'%')
+            };           
+
+
+
+------------------------------------  ??"" = null ´N¬° ""   -----------------------------------
+
+            SqlParameter[] paras = {
+                new SqlParameter("@TypeId",book.TypeId),
+                new SqlParameter("@BookTitle",$"%{book.BookTitle}%"),
+                new SqlParameter("@Author",book.Author??""),
+                new SqlParameter("@BookId",book.BookId),
+                new SqlParameter("@Publisher",book.Publisher??"")
+            };
