@@ -1,0 +1,34 @@
+https://blog.darkthread.net/blog/about-authorizeattribute-for-webapi/
+
+
+打算用Attribute限定ASP.NET Web API只接受本機存取，搬來先前寫的ASP.NET MVC版本卻沒效果。爬文得知ASP.NET Web API的AuthorizeAttribute Namespace與ASP.NET MVC不同，MVC版放在System.Web.Mvc下，Web API版則位於System.Web.Http。（此差異的關鍵在於System.Web.Mvc需依賴IIS，Web API考量跨平台另起爐灶，而ASP.NET 5也會更朝向不綁作業環境，可獨立運作的架構發展。）
+
+由於我的AuthorizeAttribute放在獨立DLL，原本未參照Web API相關程式庫，心想只用到System.Web.Http，殺雞何需動牛刀，那就別從NuGet下載整套Web API，直接參照.NET Framework的System.Web.Http就好。
+
+
+手腳俐落地將繼承來源由System.Web.Mvc.AuthorizeAttribute改成System.Web.Http.AuthorizeAttribute，HttpContextBase再改由actionContext.Request.Properties["MS_HttpContext"]取得，馬上就改好重新編譯無誤。
+
+
+實測發現，改寫後的自訂AuthorizeAttribute還是沒生效，開始一頭埋進去射茶包，花了很久時間反覆測試，最後發現將自訂AuthorizeAttribute搬到ASP.NET Web API專案就正常，案情出現一絲曙光。
+
+比較DLL專案與WebAPI專案，發現同樣是System.Web.Http，.NET Framework所附的是4.0.0版。而透過NuGet下載Web API套件：
+
+
+專案所參照的System.Web.Http會變成來自NuGet下載的5.2.3版。
+
+
+誤用4.0.0版的下場，編譯正常，執行也不會有錯誤訊息，但就是不會動… orz
+
+我學到的教訓是：要在獨立DLL開發ASP.NET MVC或Web API支援元件，也請乖乖使用NuGet下載及更新相關程式庫。
+
+僅以此文紀念白白消逝的三小時。
+
+重點整理：
+
+Web API Controller用的AuthorizeAttribute位於System.Web.Http命名空間，不要跟System.Web.Mvc的MVC Controller專用版搞混，二者不相容。
+撰寫自訂Authorization Filter時請由下列三者擇一繼承:
+AuthorizeAttribute. 若授權邏輯與使用者身分或角色有關。
+AuthorizationFilterAttribute. 授權檢查邏輯以同步方式執行（呼叫後可立刻得到結果）且與使用者身分或角色無關。 （以我的限定本機存取案例來說，最適合AuthorizationFilterAttribute）
+IAuthorizationFilter. 授權檢查邏輯以非同步方式執行，例如：涉及網路查詢或大量CPU運算，繼承IAuthorizationFilter可以省去自己寫非同步機制的功夫。
+請確認自訂AuthorizeAttribute參照的System.Web.Http與其他程式庫與Web API所參照的版本一致。
+參考：Authentication and Authorization in ASP.NET Web API - The ASP.NET Site
