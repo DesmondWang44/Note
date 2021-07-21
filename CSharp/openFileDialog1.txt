@@ -1,0 +1,5 @@
+ openFileDialog1.ShowDialog();
+      if (openFileDialog1.FileName != "")
+        txtRoot.Text = openFileDialog1.FileName;
+      else
+        txtRoot.Text = "";
