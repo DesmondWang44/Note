@@ -1,0 +1,13 @@
+新建ERP帳號
+1. 切換路徑到/usr/local/sbin=> cd /usr/local/sbin
+2. 建立linux帳號 => sudo /usr/local/sbin/user-add mjxxxxx
+3. 給密碼=>sudo passwd mjxxxxx
+4.執行p_zx建立使用者基本資料
+5.執行aooi040 建立員工基本資料
+6.執行p_zxy設定資料庫權限
+7.執行p_zxw設定程式權限或權限類別
+8.強迫登入重新變更密碼=>sudo passwd --expire mjxxxxx
+
+離職ERP帳號失效=>執行aooi040 將之設定為無效
+
+ERP帳號已建立,密碼同帳號,首次登入需更改
